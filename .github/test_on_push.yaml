@@ -1,0 +1,17 @@
+name: CI
+on:
+  push:
+    branches:
+      - main
+jobs:
+  run-tests:
+    runs-on: [windows-latest]
+    steps:
+      - uses: actions/checkout@main
+      - uses: actions/setup-python@v1
+        with:
+          python-version: 3.11
+          architecture: 'x64'
+      - name: Tests
+        run: python manage.py test
+
